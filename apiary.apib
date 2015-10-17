@@ -1,0 +1,228 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# VaR Calculator 
+
+API that allows clients to create, read, update and delete portfolios
+
+## Portfolios Collection [/portfolios]
+
+### List All Portfolios [GET]
+
++ Response 200 (application/json)
+
+        {
+                "data": {
+                    "portfolioList": [
+                        {
+                            "id": 32767,
+                            "name": "Chris1"
+                        }, {
+                            "id": 32765,
+                            "name": "Chris2"
+                        }
+                    ]
+                }
+        }
+
+### Create a portfolio [POST]
+
++ Request (application/json)
+
+        {
+                "data": {
+                    "name": "Chris1",
+                    "positions": [ 
+                        { "symbol": "IBM", "quantity": 100 }, 
+                        { "symbol": "MSFT", "quantity": -100 }, 
+                        { "symbol": "MS", "quantity": 200 }, 
+                        { "symbol": "DUK", "quantity": 100 }, 
+                    ]
+                }
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "data": {
+                    "id": 1
+                }
+            }
+            
+
+## Portfolio Instance [/portfolios/{portfolio_id}]
+
+### Get Portfolio [GET]
+
++ Parameters
+    + portfolio_id: 1 (required, number) - Unique portfolio id as a long
+
++ Request (application/json)
+
++ Response 201 (application/json)
+
+        {
+                "data": {
+                    "name": "Chris1",
+                    "positions": [ 
+                        { "id": 1234, "symbol": "IBM", "quantity": 100 }, 
+                        { "id": 1235  "symbol": "MSFT", "quantity": -100 }, 
+                        { "id": 1236, "symbol": "MS", "quantity": 200 }, 
+                        { "id": 1237, "symbol": "DUK", "quantity": 100 }, 
+                    ]
+                }
+        }
+        
++ Response 404 (application/json)
+
+        {
+            "message": "No matching portfolio found"
+        }
+
+### Delete Portfolio [DELETE]
+
++ Parameters
+    + portfolio_id: 12345 (required, number) - Unique portfolio id as a long
+
++ Request (application/json)
+
++ Response 201 (application/json)
+
++ Response 404 (application/json)
+
+## Portfolio VaR [/portfolios/{portfolio_id}/VaR/{&var_percentile}{&var_days}]
+
+### Get Portfolio VaR [GET]
+
++ Parameters
+    + portfolio_id: 12345 (required, number) - Unique portfolio id as a long
+    + var_percentile: 0.90 (optional, number) - VaR percentile
+        + default: 0.95
+    + var_days: 1 (optional, number) - number of days
+        + default: 1
+
++ Request (application/json)
+
++ Response 201 (application/json)
+
+        {
+                "data": {
+                    "VaR": 1245
+                    }
+        }
+
++ Response 404 (application/json)
+
+## Portfolio Vol [/portfolios/{portfolio_id}/Vol]
+
+### Get Portfolio Vol [GET]
+
++ Parameters
+    + portfolio_id: 12345 (required, number) - Unique portfolio id as a long
+
++ Request (application/json)
+
++ Response 201 (application/json)
+
+        {
+                "data": {
+                    "Vol": 0.01
+                    }
+        }
+
++ Response 404 (application/json)
+
+## Portfolio Net Market Value [/portfolios/{portfolio_id}/NMV]
+
+### Get Portfolio NMV [GET]
+
++ Parameters
+    + portfolio_id: 12345 (required, number) - Unique portfolio id as a long
+
++ Request (application/json)
+
++ Response 201 (application/json)
+
+        {
+                "data": {
+                    "NMV": 10000
+                    }
+        }
+
++ Response 404 (application/json)
+
+## Positions [/portfolios/{portfolio_id}/positions]
+
+### Get positions [GET]
+
++ Parameters
+    + portfolio_id: 12345 (required, number) - Unique portfolio id as a long
+
++ Request (application/json)
+
++ Response 201 (application/json)
+
+        {
+                "data": {
+                    "positions": [ 
+                        { "id": 1234, "symbol": "IBM", "quantity": 100 }, 
+                        { "id": 1235  "symbol": "MSFT", "quantity": -100 }, 
+                        { "id": 1236, "symbol": "MS", "quantity": 200 }, 
+                        { "id": 1237, "symbol": "DUK", "quantity": 100 }, 
+                    ]
+
+
++ Response 404 (application/json)
+
+### Create position as part of portfolio [POST]
+
++ Parameters
+    + portfolio_id: 12345 (required, number) - Unique portfolio id as a long
+
++ Request (application/json)
+
+        {
+                "data": {
+                    "positions": [ 
+                        { "symbol": "IBM", "quantity": 100 }, 
+                        { "symbol": "MSFT", "quantity": -100 } 
+                    ]
+        }
+
++ Response 201 (application/json)
+
+        {
+                "data": {
+                    "positions": [ 
+                        { "id": 1234, "symbol": "IBM", "quantity": 100 }, 
+                        { "id": 1235, "symbol": "MSFT", "quantity": -100 } 
+                    ]
+        }
+
++ Response 404 (application/json)
+
+## Specific positions [/portfolios/{portfolio_id}/positions/{position_id}]
+
+### Update specific position [POST]
+
++ Request (application/json)
+
+        {
+                "data": {
+                    "quantity": 500 
+                    }
+        }
+        
++ Response 201 (application/json)
+
++ Response 404 (application/json)
+
+### Delete specific position [DELETE]
+
++ Request (application/json)
+
++ Response 201 (application/json)
+
++ Response 404 (application/json)
