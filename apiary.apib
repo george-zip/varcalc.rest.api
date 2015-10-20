@@ -33,13 +33,7 @@ API that allows clients to create, read, update and delete portfolios
 
         {
                 "data": {
-                    "name": "Chris1",
-                    "positions": [ 
-                        { "symbol": "IBM", "quantity": 100 }, 
-                        { "symbol": "MSFT", "quantity": -100 }, 
-                        { "symbol": "MS", "quantity": 200 }, 
-                        { "symbol": "DUK", "quantity": 100 }, 
-                    ]
+                    "name": "Chris1"
                 }
         }
 
@@ -49,7 +43,7 @@ API that allows clients to create, read, update and delete portfolios
 
             {
                 "data": {
-                    "id": 1
+                    "id": 1234
                 }
             }
             
@@ -67,13 +61,8 @@ API that allows clients to create, read, update and delete portfolios
 
         {
                 "data": {
-                    "name": "Chris1",
-                    "positions": [ 
-                        { "id": 1234, "symbol": "IBM", "quantity": 100 }, 
-                        { "id": 1235  "symbol": "MSFT", "quantity": -100 }, 
-                        { "id": 1236, "symbol": "MS", "quantity": 200 }, 
-                        { "id": 1237, "symbol": "DUK", "quantity": 100 }, 
-                    ]
+                    "name": "Chris1"
+                    "id": 1234
                 }
         }
         
@@ -178,7 +167,7 @@ API that allows clients to create, read, update and delete portfolios
 
 + Response 404 (application/json)
 
-### Create position as part of portfolio [POST]
+### Create one or more positions as part of portfolio [POST]
 
 + Parameters
     + portfolio_id: 12345 (required, number) - Unique portfolio id as a long
