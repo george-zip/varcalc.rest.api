@@ -157,8 +157,7 @@ API that allows clients to create, read, update and delete portfolios
 + Response 201 (application/json)
 
         {
-                "data": {
-                    "positions": [ 
+                "data": [ 
                         { "id": 1234, "symbol": "IBM", "quantity": 100 }, 
                         { "id": 1235  "symbol": "MSFT", "quantity": -100 }, 
                         { "id": 1236, "symbol": "MS", "quantity": 200 }, 
@@ -176,8 +175,7 @@ API that allows clients to create, read, update and delete portfolios
 + Request (application/json)
 
         {
-                "data": {
-                    "positions": [ 
+                "data": [ 
                         { "symbol": "IBM", "quantity": 100 }, 
                         { "symbol": "MSFT", "quantity": -100 } 
                     ]
@@ -186,8 +184,7 @@ API that allows clients to create, read, update and delete portfolios
 + Response 201 (application/json)
 
         {
-                "data": {
-                    "positions": [ 
+                "data": [ 
                         { "id": 1234, "symbol": "IBM", "quantity": 100 }, 
                         { "id": 1235, "symbol": "MSFT", "quantity": -100 } 
                     ]
