@@ -84,7 +84,7 @@ API that allows clients to create, read, update and delete portfolios
 
 + Response 404 (application/json)
 
-## Portfolio VaR [/portfolios/{portfolio_id}/VaR/{&var_percentile}{&var_days}]
+## Portfolio VaR [/portfolios/{portfolio_id}/var/{&var_percentile}{&var_days}]
 
 ### Get Portfolio VaR [GET]
 
@@ -101,13 +101,13 @@ API that allows clients to create, read, update and delete portfolios
 
         {
                 "data": {
-                    "VaR": 1245
+                    "var": 1245
                     }
         }
 
 + Response 404 (application/json)
 
-## Portfolio Vol [/portfolios/{portfolio_id}/Vol]
+## Portfolio Vol [/portfolios/{portfolio_id}/vol]
 
 ### Get Portfolio Vol [GET]
 
@@ -120,13 +120,13 @@ API that allows clients to create, read, update and delete portfolios
 
         {
                 "data": {
-                    "Vol": 0.01
+                    "vol": 0.01
                     }
         }
 
 + Response 404 (application/json)
 
-## Portfolio Net Market Value [/portfolios/{portfolio_id}/NMV]
+## Portfolio Net Market Value [/portfolios/{portfolio_id}/nmv]
 
 ### Get Portfolio NMV [GET]
 
@@ -139,7 +139,7 @@ API that allows clients to create, read, update and delete portfolios
 
         {
                 "data": {
-                    "NMV": 10000
+                    "nmv": 10000
                     }
         }
 
