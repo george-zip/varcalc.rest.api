@@ -15,13 +15,12 @@ API that allows clients to create, read, update and delete portfolios
 
         [
                 "data": {
-                            "id": 32767,
-                            "name": "Chris1"
-                        }, 
+                    "id": 32767,
+                    "name": "Chris1"
+                }, 
                 "data": {
-                            "id": 32765,
-                            "name": "Chris2"
-                        }
+                    "id": 32765,
+                    "name": "Chris2"
                 }
         ]
 
@@ -66,11 +65,7 @@ API that allows clients to create, read, update and delete portfolios
         }
         
 + Response 404 (application/json)
-
-        {
-            "message": "No matching portfolio found"
-        }
-
+    
 ### Delete Portfolio [DELETE]
 
 + Parameters
@@ -100,7 +95,7 @@ API that allows clients to create, read, update and delete portfolios
         {
                 "data": {
                     "var": 1245
-                    }
+                }
         }
 
 + Response 404 (application/json)
@@ -119,7 +114,7 @@ API that allows clients to create, read, update and delete portfolios
         {
                 "data": {
                     "vol": 0.01
-                    }
+                }
         }
 
 + Response 404 (application/json)
@@ -138,7 +133,7 @@ API that allows clients to create, read, update and delete portfolios
         {
                 "data": {
                     "nmv": 10000
-                    }
+                }
         }
 
 + Response 404 (application/json)
@@ -154,18 +149,17 @@ API that allows clients to create, read, update and delete portfolios
 
 + Response 201 (application/json)
 
-        {
-                "data": [ 
-                        { "id": 1234, "symbol": "IBM", "quantity": 100 }, 
-                        { "id": 1235  "symbol": "MSFT", "quantity": -100 }, 
-                        { "id": 1236, "symbol": "MS", "quantity": 200 }, 
-                        { "id": 1237, "symbol": "DUK", "quantity": 100 }, 
-                    ]
+        [ 
+            "data": { "side": LONG, "symbol": "IBM", "quantity": 100 }, 
+            "data": { "side": SHORT  "symbol": "MSFT", "quantity": -100 }, 
+            "data": { "side": LONG, "symbol": "MS", "quantity": 200 }, 
+            "data": { "side": LONG, "symbol": "DUK", "quantity": 100 }, 
+        ]
 
 
 + Response 404 (application/json)
 
-### Create one or more positions as part of portfolio [POST]
+### Create one a position as part of portfolio [POST]
 
 + Parameters
     + portfolio_id: 12345 (required, number) - Unique portfolio id as a long
@@ -173,19 +167,18 @@ API that allows clients to create, read, update and delete portfolios
 + Request (application/json)
 
         {
-                "data": [ 
-                        { "symbol": "IBM", "quantity": 100 }, 
-                        { "symbol": "MSFT", "quantity": -100 } 
-                    ]
+                "data": { 
+                    "symbol": "IBM", "quantity": 100 
+                }
         }
 
 + Response 201 (application/json)
 
         {
-                "data": [ 
-                        { "id": 1234, "symbol": "IBM", "quantity": 100 }, 
-                        { "id": 1235, "symbol": "MSFT", "quantity": -100 } 
-                    ]
+                "data": { 
+                    "side": LONG, "symbol": "IBM", "quantity": 100 
+                } 
+                    
         }
 
 + Response 404 (application/json)
@@ -199,7 +192,7 @@ API that allows clients to create, read, update and delete portfolios
         {
                 "data": {
                     "quantity": 500 
-                    }
+                }
         }
         
 + Response 201 (application/json)
